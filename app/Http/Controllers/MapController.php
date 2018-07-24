@@ -7,7 +7,7 @@ use App\Tmap;
 
 /*
 |--------------------------------------------------------------------------
-@author: gvargas
+@author: FarhanWazir - Adapted gvargas 
 @date: 7/23/2018
 @description: Updated fot testing 
 |--------------------------------------------------------------------------
