@@ -3,10 +3,15 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
+    use WithoutMiddleware;
+
+
     /**
      * A basic test example.
      *
@@ -14,22 +19,18 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $response = $this->get('/map');
 
         $response->assertStatus(200);
     }
-    public function testPhpVersion()
+   
+	public function testDatabase()
 	{
-    	
-    	$actual = phpversion();
-    	$expected = '7.2';
-    	$this->assertEquals( $expected, $actual, 'Wrong PHP version!' );
+	    // Make call to application...
+	
+	    $this->assertDatabaseHas('tmaps', [
+	        'city' => 'Miami'
+	    ]);
 	}
-	public function testAdsress()
-	{
-    	
-    	$response = $this->get('/');
-    	$expected = 'FIU';
-    	$this->find( $expected, $actual, 'Wrong PHP version!' );
-	}
+    
 }
